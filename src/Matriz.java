@@ -1,0 +1,59 @@
+import java.util.Random;
+
+public class Matriz {
+
+    private char[][] gerarMatrizVazia(int tamanho) {
+        return new char[tamanho][tamanho];
+    }
+
+    private void imprimirMatriz(char[][] matriz) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    private char[][] preencherMatriz(char[][] matriz, char[] letras) {
+        if (letras == null) {
+            for (int i = 0; i < matriz.length; i++) {
+                for (int j = 0; j < matriz.length; j++) {
+                    matriz[i][j] = (char) ('a' + new Random().nextInt(26));
+                }
+            }
+        } else {
+            for (int i = 0; i < matriz.length; i++) {
+                for (int j = 0; j < matriz.length; j++) {
+                    matriz[i][j] = (char) letras[(new Random().nextInt(26))];
+                }
+            }
+        }
+
+        return matriz;
+    }
+
+    public char[][] inserirPalavraHorizontal(char[][] matriz, String palavra) {
+
+        int linhaAleatoria = new Random().nextInt(matriz.length);
+        int colunaAleatoria = new Random().nextInt(matriz.length - palavra.length());
+
+        for (int i = 0; i < palavra.length(); i++) {
+            matriz[linhaAleatoria][colunaAleatoria + i] = palavra.charAt(i);
+        }
+
+        return matriz;
+    }
+
+    public char[][] inserirPalavraVertical(char[][] matriz, String palavra) {
+
+        int linhaAleatoria = new Random().nextInt(matriz.length);
+        int colunaAleatoria = new Random().nextInt(matriz.length - palavra.length());
+
+        for (int i = 0; i < palavra.length(); i++) {
+            matriz[linhaAleatoria][colunaAleatoria + i] = palavra.charAt(i);
+        }
+
+        return matriz;
+    }
+}
