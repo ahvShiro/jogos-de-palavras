@@ -25,7 +25,7 @@ public class Matriz {
         } else {
             for (int i = 0; i < matriz.length; i++) {
                 for (int j = 0; j < matriz.length; j++) {
-                    matriz[i][j] = (char) letras[(new Random().nextInt(26))];
+                    matriz[i][j] = letras[(new Random().nextInt(26))];
                 }
             }
         }
@@ -36,7 +36,7 @@ public class Matriz {
     public char[][] inserirPalavraHorizontal(char[][] matriz, String palavra) {
 
         int linhaAleatoria = new Random().nextInt(matriz.length);
-        int colunaAleatoria = new Random().nextInt(matriz.length - palavra.length());
+        int colunaAleatoria = new Random().nextInt(matriz.length - palavra.length() + 1);
 
         for (int i = 0; i < palavra.length(); i++) {
             matriz[linhaAleatoria][colunaAleatoria + i] = palavra.charAt(i);
@@ -47,11 +47,11 @@ public class Matriz {
 
     public char[][] inserirPalavraVertical(char[][] matriz, String palavra) {
 
-        int linhaAleatoria = new Random().nextInt(matriz.length);
-        int colunaAleatoria = new Random().nextInt(matriz.length - palavra.length());
+        int linhaAleatoria = new Random().nextInt(matriz.length - palavra.length() + 1);
+        int colunaAleatoria = new Random().nextInt(matriz.length);
 
         for (int i = 0; i < palavra.length(); i++) {
-            matriz[linhaAleatoria][colunaAleatoria + i] = palavra.charAt(i);
+            matriz[linhaAleatoria + i][colunaAleatoria] = palavra.charAt(i);
         }
 
         return matriz;
