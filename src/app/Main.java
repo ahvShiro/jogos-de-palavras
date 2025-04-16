@@ -19,6 +19,7 @@ public class Main {
                 break;
             }
             if (input == 2) {
+                // jogo básico, com apenas uma palavra
                 jogo.comecarCacaPalavras();
                 break;
             } else {
