@@ -5,12 +5,12 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Jogo jogo = new Jogo();
-        IO io = new IO();
+        Saida saida = new Saida();
         Scanner scanner = new Scanner(System.in);
 
         String[] opcoes = {"Jogo da Descoberta", "Caça-Palavras"};
 
-        io.menuListado(opcoes);
+        saida.menuListado(opcoes);
 
         while (true) {
             int input = scanner.nextInt();

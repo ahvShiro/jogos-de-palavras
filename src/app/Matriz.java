@@ -1,54 +1,55 @@
 package app;
-
 import java.util.Random;
 
 public class Matriz {
+    Random random = new Random();
+    private char[][] matriz;
+    private int tamanho = 10;
 
-    char[][] gerarMatrizVazia(int tamanho) {
-        return new char[tamanho][tamanho];
+    public Matriz(int tamanho) {
+        this.tamanho = tamanho;
+        this.matriz = gerarMatrizPreenchida();
     }
 
-    public void imprimirMatriz(char[][] matriz) {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    char[][] preencherMatriz(char[][] matriz) {
-
+    char[][] gerarMatrizPreenchida() {
+        char[][] matrizNova = new char[tamanho][tamanho];
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz.length; j++) {
-                matriz[i][j] = (char) ('a' + new Random().nextInt(26));
+                matriz[i][j] = (char) ('a' + random.nextInt(26));
             }
         }
-
-        return matriz;
+        return matrizNova;
     }
 
-    public char[][] inserirPalavraHorizontal(char[][] matriz, String palavra) {
-
-        int linhaAleatoria = new Random().nextInt(matriz.length);
-        int colunaAleatoria = new Random().nextInt(matriz.length - palavra.length() + 1);
+    public boolean inserirPalavraHorizontal(String palavra) {
+        int linha = random.nextInt(matriz.length);
+        int colunaMaxima = tamanho - palavra.length();
+        if (colunaMaxima < 0) {
+            return false;
+        }
+        int coluna = random.nextInt(colunaMaxima + 1);
 
         for (int i = 0; i < palavra.length(); i++) {
-            matriz[linhaAleatoria][colunaAleatoria + i] = palavra.charAt(i);
+            matriz[linha][coluna + i] = palavra.charAt(i);
         }
 
-        return matriz;
+        return true;
     }
 
-    public char[][] inserirPalavraVertical(char[][] matriz, String palavra) {
+    public boolean inserirPalavraVertical(String palavra) {
+        int coluna = random.nextInt(matriz.length);
+        int linhaMaxima = matriz.length - palavra.length();
+        if (linhaMaxima < 0) {
+            return false;
+        }
 
-        int linhaAleatoria = new Random().nextInt(matriz.length - palavra.length() + 1);
-        int colunaAleatoria = new Random().nextInt(matriz.length);
+        int linha = random.nextInt(linhaMaxima + 1);
 
         for (int i = 0; i < palavra.length(); i++) {
-            matriz[linhaAleatoria + i][colunaAleatoria] = palavra.charAt(i);
+            matriz[linha + i][coluna] = palavra.charAt(i);
         }
-
-        return matriz;
+        return true;
     }
+
+
 }

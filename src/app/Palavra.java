@@ -1,10 +1,9 @@
 package app;
 
-import java.util.Random;
+import java.util.*;
 
 public class Palavra {
-
-    // perguntar pro professor como deixar essa codebase inteira escalável
+    Random random = new Random();
     String[] palavrasPreSelecionadas = {
             "objeto", "classe", "método", "código", "vetor",
             "função", "pacote", "lógica", "buffer", "script",
@@ -12,10 +11,29 @@ public class Palavra {
             "thread", "kernel", "debug", "comando", "socket"
     };
 
+    private String palavra = "";
+    private String palavraEmbaralhada = "";
+
+    public Palavra() {
+        this.palavra = palavraAleatoria(this.palavrasPreSelecionadas);
+        this.palavraEmbaralhada = embaralharPalavra(this.palavra);
+    }
+
+    public Palavra(String palavra) {
+        this.palavra = palavra;
+        this.palavraEmbaralhada = embaralharPalavra(this.palavra);
+    }
+
+    public String getPalavra() {
+        return palavra;
+    }
+
+    public String getPalavraEmbaralhada() {
+        return palavraEmbaralhada;
+    }
 
     String embaralharPalavra(String palavra) {
         char[] letras = palavra.toCharArray();
-        Random random = new Random();
 
         for (int i = letras.length - 1; i > 0; i--) {
             int j = random.nextInt(i + 1);
@@ -23,12 +41,10 @@ public class Palavra {
             letras[i] = letras[j];
             letras[j] = temp;
         }
-
         return new String(letras);
     }
 
     String palavraAleatoria(String[] arrayPalavras) {
-        Random random = new Random();
         if (arrayPalavras == null) {
             return palavrasPreSelecionadas[random.nextInt(palavrasPreSelecionadas.length)];
         } else {
@@ -36,39 +52,18 @@ public class Palavra {
         }
     }
 
-    String[] gerarPalavrasAleatorias(String[] palavras, Integer tamanho) {
-        Random random = new Random();
-        if (tamanho == null) {
-            tamanho = palavras.length;
+    char pegarPrimeiraLetra() {
+        return this.palavra.charAt(0);
+    }
+
+    char pegarUltimaLetra() {
+        return this.palavra.charAt(palavra.length() - 1);
+    }
+
+    char pegarLetrasPorIndice(int indice) {
+        if (indice >= 0 && indice < this.palavra.length()) {
+            return this.palavra.charAt(indice);
         }
-
-        // Embaralhamento Fisher-Yates
-        String[] clonePalavras = palavras.clone();
-
-        for (int i = 0; i < palavras.length; i++) {
-            int j = random.nextInt(0, clonePalavras.length - 1);
-
-            String tmp = clonePalavras[i];
-            clonePalavras[i] = clonePalavras[j];
-            clonePalavras[j] = tmp;
-        }
-
-        String[] palavrasGeradas = new String[tamanho];
-
-        System.arraycopy(clonePalavras, 0, palavrasGeradas, 0, tamanho);
-
-        return palavrasGeradas;
-    }
-
-    char getPrimeiraLetra(String palavra) {
-        return palavra.charAt(0);
-    }
-
-    char getUltimaLetra(String palavra) {
-        return palavra.charAt(palavra.length() - 1);
-    }
-
-    char retornarLetrasPorIndice(String palavra, int indice) {
-        return palavra.charAt(indice);
+        return ' ';
     }
 }
