@@ -1,28 +1,16 @@
-package app;
+package model;
 
-import java.util.Random;
-
-public class CacaPalavras {
-
-//    public void comecarCacaPalavras() {
-//        saida.tituloCentralizado("CAÇA PALAVRAS");
-//        tamanhoMatriz = 10;
+public class JogoDaDescoberta {
+    public void comecarJogoDaDescoberta() {
+        
+//        // Implementação anterior:
+//        saida.tituloCentralizado("JOGO DA DESCOBERTA");
 //
-//        // mudar matriz
-//        // abstrair isso em um construtor
-//
-//
-//        if (new Random().nextInt(1, 3) == 1) {
-//            matriz.inserirPalavraVertical(tabuleiro, palavraEscolhida);
-//        } else {
-//            matriz.inserirPalavraHorizontal(tabuleiro, palavraEscolhida);
-//        }
-//
-//        matriz.imprimirMatriz(tabuleiro);
+//        String palavraEmbaralhada = palavra.embaralharPalavra(palavraEscolhida);
 //
 //        // repetição de código não é legal, mas não sei como fazer de outro jeito por causa desse while true
 //        while (true) {
-//            saida.promptJogo(contadorTentativas, null);
+//            saida.promptJogo(contadorTentativas, palavraEmbaralhada);
 //
 //            String inputUsuario = scanner.next();
 //
@@ -32,7 +20,6 @@ public class CacaPalavras {
 //                continue;
 //            } else if (checarDesistencia(inputUsuario)) {
 //                System.out.println("Programa finalizado por motivos de skill issue XD");
-//                saida.imprimirTentativas(contadorTentativas);
 //                break;
 //            }
 //
@@ -46,5 +33,5 @@ public class CacaPalavras {
 //                saida.imprimirTentativas(contadorTentativas);
 //            }
 //        }
-//    }
+    }
 }

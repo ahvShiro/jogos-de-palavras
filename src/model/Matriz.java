@@ -1,4 +1,4 @@
-package app;
+package model;
 import java.util.Random;
 
 public class Matriz {
@@ -13,9 +13,9 @@ public class Matriz {
 
     char[][] gerarMatrizPreenchida() {
         char[][] matrizNova = new char[tamanho][tamanho];
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz.length; j++) {
-                matriz[i][j] = (char) ('a' + random.nextInt(26));
+        for (int i = 0; i < matrizNova.length; i++) {
+            for (int j = 0; j < matrizNova.length; j++) {
+                matrizNova[i][j] = (char) ('a' + random.nextInt(26));
             }
         }
         return matrizNova;
@@ -51,5 +51,11 @@ public class Matriz {
         return true;
     }
 
+    public char[][] getMatriz() {
+        return matriz;
+    }
 
+    public int getTamanho() {
+        return tamanho;
+    }
 }

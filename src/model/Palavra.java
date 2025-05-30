@@ -1,10 +1,10 @@
-package app;
+package model;
 
 import java.util.*;
 
 public class Palavra {
     Random random = new Random();
-    String[] palavrasPreSelecionadas = {
+    private String[] palavrasPreSelecionadas = {
             "objeto", "classe", "método", "código", "vetor",
             "função", "pacote", "lógica", "buffer", "script",
             "sistema", "dados", "tela", "driver", "plugin",
@@ -17,19 +17,6 @@ public class Palavra {
     public Palavra() {
         this.palavra = palavraAleatoria(this.palavrasPreSelecionadas);
         this.palavraEmbaralhada = embaralharPalavra(this.palavra);
-    }
-
-    public Palavra(String palavra) {
-        this.palavra = palavra;
-        this.palavraEmbaralhada = embaralharPalavra(this.palavra);
-    }
-
-    public String getPalavra() {
-        return palavra;
-    }
-
-    public String getPalavraEmbaralhada() {
-        return palavraEmbaralhada;
     }
 
     String embaralharPalavra(String palavra) {
@@ -45,22 +32,26 @@ public class Palavra {
     }
 
     String palavraAleatoria(String[] arrayPalavras) {
-        if (arrayPalavras == null) {
-            return palavrasPreSelecionadas[random.nextInt(palavrasPreSelecionadas.length)];
-        } else {
-            return arrayPalavras[new Random().nextInt(arrayPalavras.length)];
-        }
+        return (arrayPalavras == null) ? palavrasPreSelecionadas[random.nextInt(palavrasPreSelecionadas.length)] : arrayPalavras[new Random().nextInt(arrayPalavras.length)];
     }
 
-    char pegarPrimeiraLetra() {
+    public String getPalavra() {
+        return palavra;
+    }
+
+    public String getPalavraEmbaralhada() {
+        return palavraEmbaralhada;
+    }
+
+    public char getPrimeiraLetra() {
         return this.palavra.charAt(0);
     }
 
-    char pegarUltimaLetra() {
+    public char getUltimaLetra() {
         return this.palavra.charAt(palavra.length() - 1);
     }
 
-    char pegarLetrasPorIndice(int indice) {
+    public char pegarLetrasPorIndice(int indice) {
         if (indice >= 0 && indice < this.palavra.length()) {
             return this.palavra.charAt(indice);
         }

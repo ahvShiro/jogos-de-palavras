@@ -1,4 +1,4 @@
-package app;
+package model;
 
 import java.util.Random;
 
@@ -14,8 +14,10 @@ public class ConjuntoPalavras {
             "thread", "kernel", "debug", "comando", "socket"
     };
 
-    public ConjuntoPalavras() {
-        this(2);
+    public ConjuntoPalavras() {}
+
+    public ConjuntoPalavras(int quantidade, String[] conjuntoDePalavras) {
+        this.quantidade = quantidade;
     }
 
     String[] gerarPalavrasAleatorias(String[] palavras, Integer tamanho) {
